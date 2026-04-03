@@ -1,0 +1,13 @@
+{
+  "name": "test-public",
+  "version": "1.0.0",
+  "description": "A simple TypeScript project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
