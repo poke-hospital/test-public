@@ -34,8 +34,16 @@ jobs:
               --head "${{ github.ref_name }}"
           fi
 
-          gh pr review --approve "${{ github.ref_name }}" \
+      - name: Approve pull request
+        env:
+          GH_TOKEN: ${{ secrets.PRWRITE }}
+        run: |
+          gh pr review --approve "${{ github.ref_name }}"
 
+      - name: Auto-merge pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           gh pr merge "${{ github.ref_name }}" \
             --auto \
             --squash \
