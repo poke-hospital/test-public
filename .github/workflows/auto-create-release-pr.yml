@@ -9,7 +9,7 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +33,8 @@ jobs:
               --base main \
               --head "${{ github.ref_name }}"
           fi
+
+          gh pr review --approve "${{ github.ref_name }}" \
 
           gh pr merge "${{ github.ref_name }}" \
             --auto \
